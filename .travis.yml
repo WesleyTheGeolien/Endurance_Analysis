@@ -6,4 +6,4 @@ install:
   - pip install -r requirements-viz.txt
 # run tests
 script:
-  - tests/gen-test.py
+  - tests/gen-test
