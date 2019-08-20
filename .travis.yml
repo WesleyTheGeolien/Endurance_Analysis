@@ -1,0 +1,9 @@
+language: python
+
+# install dependencies
+install:
+  - pip install -r requirements-parse.txt
+  - pip install -r requirements-viz.txt
+# run tests
+script:
+  -  python tests/general-test.py

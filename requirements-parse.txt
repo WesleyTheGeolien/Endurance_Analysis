@@ -1,0 +1,6 @@
+#parsing
+fitparse
+
+#data
+pandas
+numpy
