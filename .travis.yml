@@ -5,5 +5,7 @@ install:
   - pip install -r requirements-parse.txt
   - pip install -r requirements-viz.txt
 # run tests
+before_script:
+  - cd tests
 script:
-  - tests/gen-test
+  - gen-test
