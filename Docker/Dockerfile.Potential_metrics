@@ -1,0 +1,5 @@
+FROM jupyter/datascience-notebook
+
+COPY requirements-parse.txt  requirements-viz.txt /tmp/
+RUN pip install -r /tmp/requirements-parse.txt && pip install -r /tmp/requirements-viz.txt
+# CMD ["gunicorn"  , "-b", "0.0.0.0:8000", "app:server"]

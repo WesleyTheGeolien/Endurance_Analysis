@@ -1,9 +1,9 @@
 version: '3'
 services:
-  app:
+  potential_metrics:
     build:
       context: ../
-      dockerfile: ./Docker/Dockerfile
+      dockerfile: ./Docker/Dockerfile.Potential_metrics
     ports:
       - 0.0.0.0:8081:8888
     volumes:
