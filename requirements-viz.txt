@@ -1,0 +1,9 @@
+#graphing
+plotly
+seaborn
+matplotlib
+
+#data
+pandas
+numpy
+scipy
