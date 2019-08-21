@@ -1,0 +1,17 @@
+# To run this docker compose file enviroment varaibels must be
+# set in a .env file the base context (..) 
+# see https://docs.docker.com/compose/environment-variables/#the-env-file
+
+version: '3'
+services:
+  potential_metrics:
+    build:
+      context: ../
+      dockerfile: ./Docker/Dockerfile.Potential_metrics
+    ports:
+      - 0.0.0.0:8081:8888
+    volumes:
+      - ${fit_files_src}:/home/jovyan/fit_files
+      - ../Potential_metrics/:/home/jovyan/Potential_metrics
+    command:
+      jupyter lab --NotebookApp.password='' --NotebookApp.token='' .

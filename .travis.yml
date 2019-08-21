@@ -1,9 +1,17 @@
 language: python
 
+services:
+  - docker
+
+before_install:
+  # Test to make sure docker containers build
+  - docker-compose -f Docker/docker-compose.yml build
+
 # install dependencies
 install:
   - pip install -r requirements-parse.txt
   - pip install -r requirements-viz.txt
+
 # run tests
 script:
   -  python tests/general-test.py
