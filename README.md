@@ -1,3 +1,3 @@
-[![Build Status](https://travis-ci.org/WesleyTheGeolien/Endurance_Analysis.svg?branch=master)](https://travis-ci.org/WesleyTheGeolien/Endurance_Analysis)
+[![Build Status](https://travis-ci.org/WesleyTheGeolien/Endurance_Analysis.svg?branch=master)](https://travis-ci.org/WesleyTheGeolien/Endurance_Analysis) [![Join the chat at https://gitter.im/Endurance_Analysis/community](https://badges.gitter.im/Endurance_Analysis/community.svg)](https://gitter.im/Endurance_Analysis/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 # Endurance_Analysis
 Tools like Strava Summit and Training Peaks are great but can be inflexible when analyzing data. Other tools like elevate exist but are part extension of strava summit part application. The goal of this project is to propose different tools for analysising endurance sports and create a standalone containerized tool.
