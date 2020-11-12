@@ -1,0 +1,15 @@
+FROM python:3.8
+
+RUN apt update && apt install -y git make
+
+WORKDIR /backend
+#  Clone the garmin Database repository into the container and set it up
+RUN git clone https://github.com/tcgoetz/GarminDB && cd GarminDB && make setup
+# Copy across the file that will be used to pass the username and password to the container from the .env file
+COPY create_config.py GarminDB
+# Generate config and download data
+ARG garmin_username
+ARG garmin_password
+RUN cd GarminDB && python create_config.py && make create_dbs
+
+CMD /bin/bash

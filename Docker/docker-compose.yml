@@ -4,14 +4,21 @@
 
 version: '3'
 services:
-  potential_metrics:
+  # potential_metrics:
+  #   build:
+  #     context: ../
+  #     dockerfile: ./Docker/Dockerfile.Potential_metrics
+  #   ports:
+  #     - 0.0.0.0:8081:8888
+  #   volumes:
+  #     - ${fit_files_src}:/home/jovyan/fit_files
+  #     - ../Potential_metrics/:/home/jovyan/Potential_metrics
+  #   command:
+  #     jupyter lab --NotebookApp.password='' --NotebookApp.token='' .
+  backend:
     build:
       context: ../
-      dockerfile: ./Docker/Dockerfile.Potential_metrics
-    ports:
-      - 0.0.0.0:8081:8888
-    volumes:
-      - ${fit_files_src}:/home/jovyan/fit_files
-      - ../Potential_metrics/:/home/jovyan/Potential_metrics
-    command:
-      jupyter lab --NotebookApp.password='' --NotebookApp.token='' .
+      dockerfile: ./Docker/Dockerfile.Backend
+      args: 
+        - garmin_username=${garmin_username}
+        - garmin_password=${garmin_password}
