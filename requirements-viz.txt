@@ -2,6 +2,8 @@
 plotly
 seaborn
 matplotlib
+panel ~=0.10
+holoviz
 
 #data
 pandas

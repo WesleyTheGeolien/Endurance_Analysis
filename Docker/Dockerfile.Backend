@@ -1,4 +1,6 @@
 FROM python:3.8
+ARG garmin_username
+ARG garmin_password
 
 RUN apt update && apt install -y git make
 
@@ -8,8 +10,13 @@ RUN git clone https://github.com/tcgoetz/GarminDB && cd GarminDB && make setup
 # Copy across the file that will be used to pass the username and password to the container from the .env file
 COPY create_config.py GarminDB
 # Generate config and download data
-ARG garmin_username
-ARG garmin_password
 RUN cd GarminDB && python create_config.py && make create_dbs
+RUN apt update && apt install -y cron
+# Copy cron file to the cron.d directory
+COPY cronfile /etc/cron.d/cronfile
+# Give execution rights on the cron job
+# Apply the cron job
+# Create the log file to check it is working
+RUN chmod 0644 /etc/cron.d/cronfile && crontab /etc/cron.d/cronfile && touch /var/log/cron.log
 
 CMD /bin/bash

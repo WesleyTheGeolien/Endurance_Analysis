@@ -1,0 +1,1 @@
+*/15 * * * * cd /backend/GarminDB && make && echo "`date`: Database updated" >> /var/log/cron.log 2>&1

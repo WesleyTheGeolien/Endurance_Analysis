@@ -4,21 +4,32 @@
 
 version: '3'
 services:
-  # potential_metrics:
-  #   build:
-  #     context: ../
-  #     dockerfile: ./Docker/Dockerfile.Potential_metrics
-  #   ports:
-  #     - 0.0.0.0:8081:8888
-  #   volumes:
-  #     - ${fit_files_src}:/home/jovyan/fit_files
-  #     - ../Potential_metrics/:/home/jovyan/Potential_metrics
-  #   command:
-  #     jupyter lab --NotebookApp.password='' --NotebookApp.token='' .
+  potential_metrics:
+    build:
+      context: ../
+      dockerfile: ./Docker/Dockerfile.Potential_metrics
+    ports:
+      - 0.0.0.0:8081:8888
+    volumes:
+      - ${fit_files_src}:/home/jovyan/fit_files
+      - ./Potential_metrics/:/home/jovyan/Potential_metrics
+      - HealthData:/home/jovyan/data
+    command:
+      jupyter lab --NotebookApp.password='' --NotebookApp.token='' .
   backend:
     build:
       context: ../
       dockerfile: ./Docker/Dockerfile.Backend
+      # Pass args from .env to the container at build time
       args: 
         - garmin_username=${garmin_username}
         - garmin_password=${garmin_password}
+    # Runs on startup
+    restart: unless-stopped
+    # Used to store the data outside the container
+    volumes:
+      - HealthData:/root/HealthData
+    # Used to keep the container running
+    entrypoint: tail -f /var/log/cron.log
+volumes:
+  HealthData:  
